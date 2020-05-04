@@ -43,7 +43,6 @@ if (optional_param('test', '', PARAM_INT)) {
 tool_polling_notification::init();
 echo $OUTPUT->header();
 $PAGE->requires->js_amd_inline(<<<EOL
-    M.util.js_pending('testfile');
     require(['jquery', 'core/pubsub'], function($, PubSub) {
         $('body').on('submit', '#testform', function(e) {
             e.preventDefault();
@@ -55,7 +54,6 @@ $PAGE->requires->js_amd_inline(<<<EOL
         PubSub.subscribe('testevent', function(e) {
             $('#pollingresults').append('Polling works!<br>');
         });
-        M.util.js_complete('testfile');
     });
 EOL
 );

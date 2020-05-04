@@ -17,6 +17,7 @@ Feature: Testing basic functionality of tool_polling
       | enabled | 1 | tool_polling |
     And I log in as "admin"
     When I am on polling fixture page
+    And I wait "2" seconds
     And I should see "Polling is enabled"
     And I should not see "Polling works"
     And I press "Test polling"
