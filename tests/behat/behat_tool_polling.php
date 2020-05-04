@@ -15,27 +15,35 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Class behat_tool_polling
+ * User tour related steps definitions.
  *
- * @package     ${NAMESPACE}
- * @copyright   2020 Moodle Pty Ltd <support@moodle.com>
- * @author      2020 Marina Glancy
- * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- * @license     Moodle Workplace License, distribution is restricted, contact support@moodle.com
+ * @package    tool_polling
+ * @category   test
+ * @copyright  2020 Marina Glancy
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-defined('MOODLE_INTERNAL') || die();
+require_once(__DIR__ . '/../../../../../lib/behat/behat_base.php');
 
+use Behat\Gherkin\Node\TableNode as TableNode;
 /**
- * Class behat_tool_polling
+ * User tour related steps definitions.
  *
- * @package     ${NAMESPACE}
- * @copyright   2020 Moodle Pty Ltd <support@moodle.com>
- * @author      2020 Marina Glancy
- * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- * @license     Moodle Workplace License, distribution is restricted, contact support@moodle.com
+ * @package    tool_polling
+ * @category   test
+ * @copyright  2020 Marina Glancy
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class behat_tool_polling
-{
+class behat_tool_polling extends behat_base {
+
+    /**
+     * Visit a fixture page for testing stuff that is not available in core.
+     *
+     * @Given /^I am on polling fixture page$/
+     */
+    public function i_am_on_polling_fixture_page() {
+        $url = '/admin/tool/polling/tests/behat/fixtures/polling.php';
+        $this->getSession()->visit($this->locate_path($url));
+    }
 
 }
