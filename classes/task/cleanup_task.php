@@ -17,22 +17,20 @@
 /**
  * Task to cleanup task logs.
  *
- * @package    core
- * @copyright  2018 Andrew Nicols <andrew@nicols.co.uk>
+ * @package    tool_polling
+ * @copyright  2020 Marina Glancy
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 namespace tool_polling\task;
 
 defined('MOODLE_INTERNAL') || die();
 
-use core\task\database_logger;
-use core\task\logmanager;
 use core\task\scheduled_task;
 
 /**
  * A task to cleanup log entries for tasks.
  *
- * @copyright  2018 Andrew Nicols <andrew@nicols.co.uk>
+ * @copyright  2020 Marina Glancy
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class cleanup_task extends scheduled_task {

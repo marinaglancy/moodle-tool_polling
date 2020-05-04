@@ -15,33 +15,27 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Plugin upgrade steps are defined here.
+ * Class behat_tool_polling
  *
- * @package     tool_polling
- * @category    upgrade
- * @copyright   2020 Marina Glancy
+ * @package     ${NAMESPACE}
+ * @copyright   2020 Moodle Pty Ltd <support@moodle.com>
+ * @author      2020 Marina Glancy
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @license     Moodle Workplace License, distribution is restricted, contact support@moodle.com
  */
 
 defined('MOODLE_INTERNAL') || die();
 
 /**
- * Execute tool_polling upgrade from the given old version.
+ * Class behat_tool_polling
  *
- * @param int $oldversion
- * @return bool
+ * @package     ${NAMESPACE}
+ * @copyright   2020 Moodle Pty Ltd <support@moodle.com>
+ * @author      2020 Marina Glancy
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @license     Moodle Workplace License, distribution is restricted, contact support@moodle.com
  */
-function xmldb_tool_polling_upgrade($oldversion) {
-    global $DB;
+class behat_tool_polling
+{
 
-    $dbman = $DB->get_manager();
-
-    // For further information please read the Upgrade API documentation:
-    // https://docs.moodle.org/dev/Upgrade_API
-    //
-    // You will also have to create the db/install.xml file by using the XMLDB Editor.
-    // Documentation for the XMLDB Editor can be found at:
-    // https://docs.moodle.org/dev/XMLDB_editor
-
-    return true;
 }
