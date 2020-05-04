@@ -26,13 +26,13 @@
 defined('MOODLE_INTERNAL') || die();
 
 $string['enabled'] = 'Enable polling for updates';
-$string['enableddesc'] = 'When user opens a web page, the page will poll the server asking if there are any updates for this user. 
+$string['enableddesc'] = 'When user opens a web page, the page will poll the server asking if there are any updates for this user.
 Some pages may use this to update the content without requiring user to refresh the page. This can significantly improve user
 experience, but at the same time increase the server load';
 $string['pluginname'] = 'Polling page updates';
 $string['pollurl'] = 'Alternative polling URL';
-$string['pollurldesc'] = 'The URL used for polling for updates may be separated from the main web site to balance the server 
-load or configure different timeouts. This page may even be on a different domain, it does not need to have access to Moodle 
+$string['pollurldesc'] = 'The URL used for polling for updates may be separated from the main web site to balance the server
+load or configure different timeouts. This page may even be on a different domain, it does not need to have access to Moodle
 cookies, it uses the token to validate that the user has active session. If not specified the requests will be sent to {$a}';
 $string['privacy:metadata'] = 'The Polling page updates plugin only stores user notifications for 5 minutes and they do not have personal information';
 $string['taskcleanup'] = 'Clean-up notifications for polling';

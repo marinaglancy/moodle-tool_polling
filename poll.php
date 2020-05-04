@@ -25,10 +25,10 @@
 
 define('AJAX_SCRIPT', true);
 define('NO_MOODLE_COOKIES', true);
+// @codingStandardsIgnoreLine This script does not require login.
 require_once(__DIR__ . '/../../../config.php');
 
 // We do not want to call require_login() here because we don't want to update 'lastaccess' and keep session alive.
-$pageurl = optional_param('pageurl', '', PARAM_LOCALURL);
 $fromid = optional_param('fromid', 0, PARAM_INT);
 $userid = optional_param('userid', 0, PARAM_INT);
 $token = optional_param('token', '', PARAM_RAW);

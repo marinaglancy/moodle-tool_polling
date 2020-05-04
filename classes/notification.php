@@ -61,7 +61,7 @@ class tool_polling_notification {
             throw new coding_exception('Groupped events can not have additional information');
         }
         $params = [
-            'userid' => $userid,
+            'relateduserid' => $userid,
             'event' => $event,
             'groupevents' => (int)$groupevents,
             'addinfo' => json_encode($addinfo)
@@ -94,14 +94,13 @@ class tool_polling_notification {
      * Get all notifications for a given user
      *
      * @param int $userid
-     * @param string $pageurl
      * @param int $fromid
      * @return array
      */
     public static function get_all(int $userid, int $fromid = 0): array {
         global $DB;
         $notifications = $DB->get_records_select('tool_polling',
-            'userid = :userid AND id > :fromid',
+            'relateduserid = :userid AND id > :fromid',
             ['userid' => $userid, 'fromid' => $fromid],
             'id', 'id, event, groupevents, addinfo');
         array_walk($notifications, function(&$item) {
@@ -161,11 +160,11 @@ class tool_polling_notification {
         if (!self::is_enabled() || !isloggedin() || isguestuser() || self::$initialised) {
             return;
         }
-        $fromid = (int)$DB->get_field_sql("SELECT max(id) FROM {tool_polling} WHERE userid = ?", [$USER->id]);
+        $fromid = (int)$DB->get_field_sql("SELECT max(id) FROM {tool_polling} WHERE relateduserid = ?", [$USER->id]);
         $url = get_config('tool_polling', 'pollurl') ?:
             (new moodle_url('/admin/tool/polling/poll.php'))->out(false);
         $PAGE->requires->js_call_amd('tool_polling/poll', 'init',
-            [$USER->id, self::get_token(), $fromid, $PAGE->url->out_as_local_url(false), $url]);
+            [$USER->id, self::get_token(), $fromid, $url]);
         self::$initialised = true;
     }
 }

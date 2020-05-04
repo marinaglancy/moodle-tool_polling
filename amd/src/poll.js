@@ -90,14 +90,13 @@ define(['core/pubsub'], function(PubSub) {
             }
         };
         var url = pollURL + '?userid=' + encodeURIComponent(params.userid) +
-            '&token=' + encodeURIComponent(params.token) + '&fromid=' + encodeURIComponent(params.fromid) +
-            '&pageURL=' + encodeURIComponent(params.pageurl);
+            '&token=' + encodeURIComponent(params.token) + '&fromid=' + encodeURIComponent(params.fromid);
         ajax.open('GET', url, true);
         ajax.send();
     };
 
     return /** @alias tool_polling/poll */ {
-        init: function(userId, token, fromId, pageURL, pollURLParam) {
+        init: function(userId, token, fromId, pollURLParam) {
             if (params && params.userid) {
                 // Already initialised.
                 return;
@@ -105,8 +104,7 @@ define(['core/pubsub'], function(PubSub) {
             params = {
                 userid: userId,
                 token: token,
-                fromid: fromId,
-                pageurl: pageURL
+                fromid: fromId
             };
             pollURL = pollURLParam;
             poll();

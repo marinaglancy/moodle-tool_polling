@@ -49,8 +49,8 @@ class tool_polling_tool_polling_testcase extends advanced_testcase {
         $user1 = $this->getDataGenerator()->create_user();
         $user2 = $this->getDataGenerator()->create_user();
         tool_polling_notification::add_for_user($user1->id, 'refreshMessages');
-        $this->assertTrue($DB->record_exists('tool_polling', ['userid' => $user1->id]));
-        $this->assertFalse($DB->record_exists('tool_polling', ['userid' => $user2->id]));
+        $this->assertTrue($DB->record_exists('tool_polling', ['relateduserid' => $user1->id]));
+        $this->assertFalse($DB->record_exists('tool_polling', ['relateduserid' => $user2->id]));
     }
 
     public function test_add_for_users() {
@@ -61,9 +61,9 @@ class tool_polling_tool_polling_testcase extends advanced_testcase {
         $user2 = $this->getDataGenerator()->create_user();
         $user3 = $this->getDataGenerator()->create_user();
         tool_polling_notification::add_for_users([$user1->id, $user2->id], 'refreshMessages');
-        $this->assertTrue($DB->record_exists('tool_polling', ['userid' => $user1->id]));
-        $this->assertTrue($DB->record_exists('tool_polling', ['userid' => $user2->id]));
-        $this->assertFalse($DB->record_exists('tool_polling', ['userid' => $user3->id]));
+        $this->assertTrue($DB->record_exists('tool_polling', ['relateduserid' => $user1->id]));
+        $this->assertTrue($DB->record_exists('tool_polling', ['relateduserid' => $user2->id]));
+        $this->assertFalse($DB->record_exists('tool_polling', ['relateduserid' => $user3->id]));
     }
 
     public function test_get_all() {
@@ -84,7 +84,7 @@ class tool_polling_tool_polling_testcase extends advanced_testcase {
         $user2 = $this->getDataGenerator()->create_user();
         tool_polling_notification::add_for_user($user1->id, 'refreshMessages');
         tool_polling_notification::add_for_user($user2->id, 'refreshMessages');
-        $record = $DB->get_record('tool_polling', ['userid' => $user1->id]);
+        $record = $DB->get_record('tool_polling', ['relateduserid' => $user1->id]);
         $DB->update_record('tool_polling', ['id' => $record->id, 'timecreated' => time() - DAYSECS]);
 
         ob_start();
@@ -95,7 +95,7 @@ class tool_polling_tool_polling_testcase extends advanced_testcase {
         ob_end_clean();
 
         $this->assertEquals('Done', trim($output));
-        $this->assertFalse($DB->record_exists('tool_polling', ['userid' => $user1->id]));
-        $this->assertTrue($DB->record_exists('tool_polling', ['userid' => $user2->id]));
+        $this->assertFalse($DB->record_exists('tool_polling', ['relateduserid' => $user1->id]));
+        $this->assertTrue($DB->record_exists('tool_polling', ['relateduserid' => $user2->id]));
     }
 }
