@@ -40,13 +40,13 @@ install:
   - sleep 10
 
 script:
-  - if [ "$CODECHECK" = "" ]; then moodle-plugin-ci phplint; fi
-  - if [ "$CODECHECK" = "" ]; then moodle-plugin-ci codechecker; fi
-  - if [ "$CODECHECK" = "" ]; then moodle-plugin-ci validate; fi
-  - if [ "$CODECHECK" = "" ]; then moodle-plugin-ci savepoints; fi
-  - if [ "$CODECHECK" = "" ]; then moodle-plugin-ci mustache; fi
-  - if [ "$CODECHECK" = "" ]; then moodle-plugin-ci grunt; fi
-  - if [ "$CODECHECK" = "" ]; then moodle-plugin-ci phpdoc; fi
+  - if [ "$CODECHECK" = "1" ]; then moodle-plugin-ci phplint; fi
+  - if [ "$CODECHECK" = "1" ]; then moodle-plugin-ci codechecker; fi
+  - if [ "$CODECHECK" = "1" ]; then moodle-plugin-ci validate; fi
+  - if [ "$CODECHECK" = "1" ]; then moodle-plugin-ci savepoints; fi
+  - if [ "$CODECHECK" = "1" ]; then moodle-plugin-ci mustache; fi
+  - if [ "$CODECHECK" = "1" ]; then moodle-plugin-ci grunt; fi
+  - if [ "$CODECHECK" = "1" ]; then moodle-plugin-ci phpdoc; fi
   - cd moodle
   - moodle-plugin-ci phpunit
   - vendor/bin/phpunit --fail-on-risky --disallow-test-output -v admin/tool/dataprivacy/tests/metadata_registry_test.php

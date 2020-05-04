@@ -11,11 +11,13 @@ Feature: Testing basic functionality of tool_polling
     And I should see "Alternative polling URL"
     And I press "Save changes"
 
+  @javascript
   Scenario: Basic test of polling for updates
     Given the following config values are set as admin:
-      | Enable polling for updates | 1 |
+      | enabled | 1 | tool_polling |
     And I log in as "admin"
-    When I am on fixture page "/admin/tool/polling/tests/behat/fixtures/polling.php"
+    When I am on polling fixture page
+    And I should see "Polling is enabled"
     And I should not see "Polling works"
     And I press "Test polling"
     And I wait "2" seconds
